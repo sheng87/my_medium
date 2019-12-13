@@ -1,9 +1,8 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item" href="https://bulma.io">
+  <%= link_to root_path, class: 'navbar-item' do %>
       <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
-    </a>
-
+  <% end %>
     <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
@@ -20,37 +19,60 @@
       <a class="navbar-item">
         Documentation
       </a>
+       <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                More
+              </a>
 
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          More
-        </a>
+              <div class="navbar-dropdown">
+                <a class="navbar-item">
+                  About
+                </a>
+                <a class="navbar-item">
+                  Jobs
+                </a>
+                <a class="navbar-item">
+                  Contact
+                </a>
+                <hr class="navbar-divider">
+                <a class="navbar-item">
+                  Report an issue
+                </a>
+              </div>
+            </div>
+          </div>
+        
+      
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+            <% if user_signed_in? %>
+            
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                <%= current_user.email%>
+              </a>
 
-        <div class="navbar-dropdown">
-          <a class="navbar-item">
-            About
-          </a>
-          <a class="navbar-item">
-            Jobs
-          </a>
-          <a class="navbar-item">
-            Contact
-          </a>
-          <hr class="navbar-divider">
-          <a class="navbar-item">
-            Report an issue
-          </a>
-        </div>
-      </div>
-    </div>
+              <div class="navbar-dropdown">
+               <%=link_to "新增故事", new_story_path, class: 'navbar-item'%>
+               <%=link_to "故事列表", stories_path, class: 'navbar-item'%>
+               <%=link_to "個人資料", edit_user_registration_path, class: 'navbar-item'%>
+                <%=link_to "登出", destroy_user_session_path, class: 'navbar-item', method: 'delete',data: {confirm: '是否登出?'} %>
+              </div>
+            </div>    
+               
+                
+                
+                
+                
+              </div>
+            </div>
+          </div>
+             
+           
+            
 
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="buttons">
-        <% if user_signed_in? %>
-          
-           <%= link_to "登出", destroy_user_session_path, class: 'button is-danger',method: 'delete',data: {confirm: '是否確定登出?'} %>
-          
+        
 
         <% else %>
             <%= link_to "註冊", new_user_registration_path, class:'button is-primary' %>
