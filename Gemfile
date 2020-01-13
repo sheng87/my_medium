@@ -12,6 +12,12 @@ gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 gem 'devise', '~> 4.7', '>= 4.7.1'
+gem 'aasm', '~> 5.0', '>= 5.0.6'
+gem 'friendly_id', '~> 5.3'
+gem 'babosa', '~> 1.0', '>= 1.0.3'
+gem 'acts_as_paranoid', '~> 0.6.2'
+gem 'webpacker', '~> 4.0'
+
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 4.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -24,7 +30,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+gem 'mini_magick', '~> 4.10', '>= 4.10.1'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

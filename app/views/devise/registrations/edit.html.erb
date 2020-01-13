@@ -1,11 +1,37 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2 class= "title">個人資料</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
+      <%= f.label :username, '使用者帳戶' %><br />
+      <div class="control">
+      <%= f.text_field :username, class: 'textfield is-medium' %>
+      </div>
+      <p class="help ">範例:@sheng87</p>
+  </div>
+
+  <div class="field">
+      <%= f.label :avatar, '大頭貼' %><br />
+      <div class="control">
+      <%= f.file_field :avatar %>
+      </div>
+
+       <%= avatar (current_user) %>
+  </div>
+
+ 
+
+   <div class="field">
+      <%= f.label :intro, '個人簡介' %><br />
+      <div class="control">
+      <%= f.text_area :intro, class: 'textarea is-medium' , rows: 5  %>
+      </div>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
-     <%= f.email_field :email, autofocus: true, autocomplete: "email",class: 'input' %>
+     <%= f.email_field :email, autocomplete: "email",class: 'input is-medium' %>
     <div class="control">
     <div>
    
@@ -16,31 +42,28 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.label :password, '密碼' %> <i></i><br />
+    <%= f.password_field :password, autocomplete: "new-password" , class: 'input is-medium' %>
     <% if @minimum_password_length %>
       <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+      <em><% @minimum_password_length %> </em>
+      <p class="help is-danger">密碼至少6位數</p>
     <% end %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.label :password_confirmation, '密碼確認' %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'input is-medium' %>
   </div>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
 
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "Update" , class: 'button is-medium is-primary'%>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+
 
 <%= link_to "Back", :back %>

@@ -1,0 +1,11 @@
+/*
+ *= require_bulma
+ *= require bulma.css
+ *= require_self
+ */
+.navbar-link {
+    .user-avatar {
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+}
