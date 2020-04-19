@@ -1,0 +1,8 @@
+<article class="comment">
+          <span class="profile">
+            <img src="https://fakeimg.pl/50x50/" class="avatar"> 
+            <span class="username"><%= comment.user.username %></span>
+            <%= image_tag comment.user.avatar.variant(resize: '50x50') if comment.user.avatar.attached? %>
+          </span>
+          <%= simple_format(comment.content) %>
+        </article>

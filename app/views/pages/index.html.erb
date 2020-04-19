@@ -1,0 +1,162 @@
+
+<h1 class="title"><h1>
+
+<section class="section">
+    <div class="container">
+
+
+      <!-- navbar -->
+
+      <section class="columns">
+        <!-- left -->
+        <section class="column">
+          <article>
+            <figure class="image">
+              <img src="https://fakeimg.pl/350x150/f0f0f0" alt="">
+            </figure>
+            <h2 class="title is-5">Creating a Pipeline to True Workplace Diversity</h2>
+            <p class="content">Providing resources, offering acceptance, and involving people of color are keys to making your company more diverse...</p>
+            <footer>
+              <p>Arielle Wiltz in Modus</p>
+              <p>Aug 7</p>
+            </footer>
+          </article>
+        </section>
+        <!-- left -->
+        <!-- middle -->
+        <section class="column">
+          <article class="media">
+            <figure class="media-left">
+              <img src="https://fakeimg.pl/100x100/">
+            </figure>
+            <div class="media-content">
+              <h2 class="title is-5">I Worked for an Amish Reality TV Show</h2>
+              <footer>
+                <p>Arielle Wiltz in Modus</p>
+                <p>Aug 7</p>
+              </footer>
+            </div>
+          </article>
+          <article class="media">
+            <figure class="media-left">
+              <img src="https://fakeimg.pl/100x100/">
+            </figure>
+            <div class="media-content">
+              <h2 class="title is-5">I Worked for an Amish Reality TV Show</h2>
+              <footer>
+                <p>Arielle Wiltz in Modus</p>
+                <p>Aug 7</p>
+              </footer>
+            </div>
+          </article>
+          <article class="media">
+            <figure class="media-left">
+              <img src="https://fakeimg.pl/100x100/">
+            </figure>
+            <div class="media-content">
+              <h2 class="title is-5">I Worked for an Amish Reality TV Show</h2>
+              <footer>
+                <p>Arielle Wiltz in Modus</p>
+                <p>Aug 7</p>
+              </footer>
+            </div>
+          </article>
+        </section>
+        <!-- middle -->
+        <!-- right -->
+        <section class="column">
+          <article>
+            <figure class="image">
+              <img src="https://fakeimg.pl/350x200/f0f0f0" alt="">
+            </figure>
+            <h2 class="title is-5">Creating a Pipeline to True Workplace Diversity</h2>
+            <p class="content">Providing resources, offering acceptance, and involving people of color are keys to making your company more diverse...</p>
+            <footer>
+              <p>Arielle Wiltz in Modus</p>
+              <p>Aug 7</p>
+            </footer>
+          </article>
+        </section>
+        <!-- right -->
+      </section>
+
+      <hr>
+
+      <section class="columns">
+        <!-- article list -->
+        <section class="column is-two-thirds">
+        <% @stories.each do |story| %>
+          <article class="media">
+            <div class="media-content">
+              <h2 class="title is-4"><%=link_to story.title, story_page_path(story.user.username,story), class:'has-text-grey-dark'%></h2>
+              <p class="content"><%= strip_tags(story.content).truncate(100)%></p>
+              <footer>
+                <p><%=link_to story.user.username, user_page_path(story.user.username),class: 'has-text-grey'%> |
+                <%= time_ago_in_words(story.created_at) %></p>
+              </footer>
+            </div>
+            <% if story.cover_image.attached? %>
+            <figure class="media-right">            
+            <%= image_tag story.cover_image.variant(resize: '150x150') %>
+            </figure>
+            <% end %>
+          </article>
+        <% end %>
+         
+        <!-- article list -->
+
+        <section class="column">
+          <h2 class="title is-4">Popular on Medium</h2>
+          <hr>
+
+          <article class="media">
+            <div class="media-left">01</div>
+            <div class="media-content">
+              <h3>Difficult Conversation Lessons From a Psychologist Who’s Been Dealing With People</h3>
+              <footer>
+                <p>Thomas Oppong</p>
+              </footer>
+            </div>
+          </article>
+
+          <article class="media">
+            <div class="media-left">02</div>
+            <div class="media-content">
+              <h3>Difficult Conversation Lessons From a Psychologist Who’s Been Dealing With People</h3>
+              <footer>
+                <p>Thomas Oppong</p>
+              </footer>
+            </div>
+          </article>
+
+          <article class="media">
+            <div class="media-left">03</div>
+            <div class="media-content">
+              <h3>Difficult Conversation Lessons From a Psychologist Who’s Been Dealing With People</h3>
+              <footer>
+                <p>Thomas Oppong</p>
+              </footer>
+            </div>
+          </article>
+
+          <article class="media">
+            <div class="media-left">04</div>
+            <div class="media-content">
+              <h3>Difficult Conversation Lessons From a Psychologist Who’s Been Dealing With People</h3>
+              <footer>
+                <p>Thomas Oppong</p>
+              </footer>
+            </div>
+          </article>
+
+          <article class="media">
+            <div class="media-left">05</div>
+            <div class="media-content">
+              <h3>Difficult Conversation Lessons From a Psychologist Who’s Been Dealing With People</h3>
+              <footer>
+                <p>Thomas Oppong</p>
+              </footer>
+            </div>
+          </article>
+        </section>
+      </section>

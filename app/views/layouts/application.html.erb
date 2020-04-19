@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MyMedium</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+   <div class="container">
+      <%= render 'shared/frontend/navbar' %>
+      <%= render 'shared/frontend/flash' if notice %>
+      <%= yield %>
+   <div>
+    
+  </body>
+</html>

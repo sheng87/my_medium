@@ -1,0 +1,90 @@
+// Place all the styles related to the stories controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+
+form {
+  img.cover-image {
+    display: block;
+  }
+}
+
+.story-content {
+  // 作者
+  .profile {
+    display: flex;
+    align-items: center;
+
+    img.avatar {
+      border-radius: 25px;
+    }
+
+    .username {
+      padding: 3px;
+      margin-left: 1em;
+    }
+
+    .follow-button {
+      border: solid darkgray 1px;
+      padding: 1px 8px;
+      margin-left: 1em;
+      border-radius: 3px;
+      color: darkgray;
+
+      &:hover {
+        background-color: darkgray;
+        color: white;
+      }
+    }
+  }
+
+  // 主文
+  article.content {
+    margin-top: 1em;
+    text-align: left;
+    padding: 1em;
+
+    img.cover-image {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  // 留言區
+  .comments {
+    padding: 0.7em 1em;
+    text-align: left;
+    margin-bottom: 1em;
+
+    h2 {
+      color: darkgray;
+      font-size: 1.3em;
+    }
+
+    .comment-editor {
+      button {
+        margin-top: 8px;
+      }
+    }
+
+    .comment {
+      border: solid lightgray 1px;
+      border-radius: 8px;
+      box-shadow: 1px 1px 3px lightgray;
+      padding: 1em 1.4em;
+      margin-top: 8px;
+      margin-bottom: 1em;
+    }
+  }
+}
+
+p {
+  color: darkgrey;
+}
+
+// bookmark
+      .bookmark-button {
+        margin-left: 1em;
+        font-size: 1.4em;
+      }

@@ -1,0 +1,50 @@
+
+<section class="columns has-text-centered story-content">
+  <section class="column is-offset-3 is-6">
+    <h1 class="title"><%= @story.title%></h1>
+
+    <span class="profile" data-controller='user'>
+      <%= image_tag @story.user.avatar.variant(resize: '50x50'), calss: 'avatar' if @story.user.avatar.attached? %>
+      <span class="username"><%= @story.user.username %></span>
+      
+      <%= link_to '#', class: 'follow-button', 
+      data: {action: 'user#follow',
+      user: @story.user.id, 
+      target: 'user.followButton'} do %> 
+        <%= (user_signed_in? && current_user.follow?(@story.user)) ? 'Followed' : 'Follow' %>
+        <%end%>
+    <%=link_to '#', class:'bookmark-button' , data:{ action: 'user#bookmark', slug:@story.slug } do %>
+      <% if user_signed_in? && current_user.bookmark?(@story) %>
+        <i class="fas fa-bookmark" data-target="user.bookmark"></i>
+      <% else %>
+        <i class="far fa-bookmark" data-target="user.bookmark"></i>
+      <% end %>
+    <%end%> 
+    </span>
+
+    <article class="content">
+      <%= image_tag @story.cover_image.variant(resize: '500x1000'), class: 'cover-image'if @story.cover_image.attached? %>  
+      <%= @story.content %>
+      <footer data-controller="story">
+       <%=link_to "#" ,class: 'clapButton is-size-2 has-text-primary', data:{ action: 
+       'story#addClap',slug: @story.slug} do%>
+       <i class="far fa-hand-point-up"></i>
+       <span class= "clapCount" data-target="story.clapCount"><%= @story.clap%></span>
+       <%end%>
+      </footer>
+    </article>
+    <hr>
+    <section class="comments">
+      <h2>留言</h2>
+
+     
+      <%= render 'comment_area', story: @story, comment: @comment %>
+      <section class="comment-list">
+        <%= render partial: 'comment',collection: @comments %>
+
+        
+      </section>
+    </section>
+  </section>
+</section>
+ 

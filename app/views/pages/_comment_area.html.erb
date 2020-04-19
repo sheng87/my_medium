@@ -1,0 +1,12 @@
+
+<section class="comment-editor">
+  <% if user_signed_in? %>
+    <%= form_with model: comment, url: story_comments_path(story),class: 'comment_form', remote: true do |form| %>
+      <%= form.text_area :content, rows: 5, class: "textarea is-small" %>
+      <%= form.button '送出', class: "button is-primary is-fullwidth" %>
+    <% end %>
+  <% else %>
+    <%= link_to "請先登入", new_user_session_path, class: 'button is-success' %>
+    <%= link_to "會員註冊", new_user_registration_path, class: 'button is-info' %>
+  <% end %>
+</section>
