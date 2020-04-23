@@ -3,7 +3,7 @@
     <%= story.errors.full_messages.to_sentence %>
 </div>
 <% end%>
-<%= form_for(story) do |form| %>
+<%= form_for(story, html: {class: 'story-editor'}) do |form| %>
     <div class="field">
         <%= image_tag story.cover_image , class: 'cover-image' if story.cover_image.attached?  %>
         <%= form.label :cover_image, '封面圖' %>
@@ -22,8 +22,14 @@
     </div>
 
     <div class="field">
-        <%= form.submit '儲存草稿',name: 'save_as_draft', class: 'button is-medium' %>
+    <% if story.published? %>
+        <%= form.submit '更新文章',name: 'save_as_draft', class: 'button is-medium' %>
+    <% else  %>
+        <%= form.submit '儲存草稿',name: 'save_as_draft', class: 'button is-medium' %>  
+    <% end %>       
         <%= form.submit '發佈文章',name: 'publish', class: 'button is-medium is-info' if story.may_publish? %>
         <%= form.submit '文章下架',name: 'unpublish', class: 'button is-medium is-danger' if story.may_unpublish? %>
     </div>
-<% end %>    
+<% end %>  
+
+<%= javascript_pack_tag 'editor' %>
