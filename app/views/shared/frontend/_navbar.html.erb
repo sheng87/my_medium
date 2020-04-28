@@ -50,6 +50,8 @@
             
             <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link">
+              <%= content_tag :i, "",class: 'fas fa-crown has-text-primary ' if current_user.vip_user? %>
+              <%= content_tag :i, "",class: 'fas fa-crown has-text-danger ' if current_user.platinum_user? %>
                 <%= avatar(current_user, size:50)  %>
                 <%= current_user.email%>
               </a>
@@ -57,12 +59,15 @@
               <div class="navbar-dropdown">
                <%=link_to "新增故事", new_story_path, class: 'navbar-item'%>
                <%=link_to "故事列表", stories_path, class: 'navbar-item'%>
+
+               <%=link_to "會員升級", pricing_users_path, class: 'navbar-item' unless current_user.paid_user? %>
                <%=link_to "個人資料", edit_user_registration_path, class: 'navbar-item'%>
                 <%=link_to "登出", destroy_user_session_path, class: 'navbar-item', method: 'delete',data: {confirm: '是否登出?'} %>
               </div>
             </div>    
                
                 
+            
                 
                 
                 

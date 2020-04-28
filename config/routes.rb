@@ -21,16 +21,6 @@ Rails.application.routes.draw do
   end 
     
 
-    
-
-    resources :stories, only: [] do 
-      member do
-        post :clap
-        post :bookmark
-      end
-    end
-  
-
   resources :users, only: [] do
     collection do
       get :pricing   # /users/pricing
@@ -39,14 +29,13 @@ Rails.application.routes.draw do
     end
   end
 
+
   resources :stories do 
     resources :comments, only: [:create]
   end
 
-  # /@kaochenlong/文章標題-123
   get '@:username/:story_id', to: 'pages#show', as: 'story_page'
 
-  # /@kaochenlong/
   get '@:username', to: 'pages#user', as: 'user_page'
 
   get "/demo", to: 'pages#demo'

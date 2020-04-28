@@ -18,6 +18,8 @@ gem 'babosa', '~> 1.0', '>= 1.0.3'
 gem 'acts_as_paranoid', '~> 0.6.2'
 gem 'webpacker', '~> 5.0', '>= 5.0.1'
 gem 'paranoia', '~> 2.1', '>= 2.1.5'
+gem 'figaro', '~> 1.1.1'
+gem "braintree", "~> 2.101.0"
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks

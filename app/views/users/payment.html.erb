@@ -1,0 +1,49 @@
+<div class="box">
+  <article class="media">
+    <div class="media-left">
+      <figure class="image is-64x64">
+        <img src="https://fakeimg.pl/128x128/?text=CCH" alt="Image">
+      </figure>
+    </div>
+    <div class="media-content">
+      <div class="content">
+        <strong><%= @payment_type %>(USD)<%= @fee %></span>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+        </p>
+      </div>
+    </div>
+  </article>
+</div>
+
+<%= form_with url: pay_users_path(type: params[:type]), id:'pay_form', method: 'post', local: true do |form| %>
+    <%= form.hidden_field :payment_nonce %>
+    <div id="dropin-container"></div>
+    <%= link_to "重新選擇方案" , pricing_users_path, class: 'button is-light' %>
+    <button id="submit-button" class = "button is-danger">請給錢</button>
+<% end %>
+ 
+
+<script src="https://js.braintreegateway.com/web/dropin/1.22.1/js/dropin.min.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function(event){
+
+        var button = document.querySelector('#submit-button');
+        let nonce_field = document.querySelector('input[name="payment_nonce"]') 
+        let form = document.querySelector('#pay_form')
+
+        braintree.dropin.create({
+          authorization: '<%= @token %>',
+          container: '#dropin-container'
+        }, function (createErr, instance) {
+          button.addEventListener('click', function (event) {
+            event.preventDefault()
+            instance.requestPaymentMethod(function (err, payload) {
+                nonce_field.value = payload.nonce
+                form.submit()
+            });
+          });
+        });
+     }) 
+</script>
