@@ -2,9 +2,12 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
-
+gem 'nokogiri'
+gem 'rack', '~> 2.0.1'
+gem 'rspec'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0.1'
+gem 'rails', '~> 6.0', '>= 6.0.2.2'
+gem 'bundler', '~> 2.1', '>= 2.1.4'
 # Use postgresql as the database for Active Record
 group :production do
   gem 'pg', '>= 0.18', '< 2.0'
